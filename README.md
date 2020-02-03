@@ -14,3 +14,9 @@ Joseph Crawford | jtc657  | JoeCrawford99
 Languages to be used:\
 Python\
 Python Flask
+
+Some possible additions would be delete, share, dislike, possible additions to be added later.
+
+We may possibly be using an SQL database to store posts and relative information.
+
+Our expected deadline will be April 23.
