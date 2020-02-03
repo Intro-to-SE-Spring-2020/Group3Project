@@ -2,7 +2,7 @@
 Twitter project
 
 Description of project:
-This project is meant to create a website similar to twiiter with some of the same functionality.
+This project is meant to create a website similar to twitter with some of the same functionality.
 
 The members of this team are:
 
