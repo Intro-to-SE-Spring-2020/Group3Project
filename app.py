@@ -24,6 +24,9 @@ def login():
 #def welcome():
 #    return render_template('welcome.html')  # render a template
 
+def login():
+    print('login')
+
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True)
