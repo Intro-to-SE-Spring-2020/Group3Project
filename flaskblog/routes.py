@@ -115,6 +115,9 @@ def post(post_id):
     return render_template('post.html', title=post.title, post=post)
 
 
+
+
+
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):

@@ -4,6 +4,13 @@ from flaskblog import db, login_manager, app
 from flask_login import UserMixin
 
 
+
+
+def like_hit():
+    print("hello world")
+    return 0
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

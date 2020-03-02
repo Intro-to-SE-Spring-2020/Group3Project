@@ -12,10 +12,30 @@
 
             <p class="article-content">{{ post.content}}</p>
 
-            <button type="button" >Like</button>
+
+<!--
+           <form action="/update_likes.php" method="get">
+              Update likes: <input type="integer" name="likes" value="5"><br>
+
+              <button type="submit">Submit</button>
+            </form>
+
+-->
+            <button type="button" onclick = "window.location.href='about'">Like</button>
+
+             <!--<button type="button" onclick = "myFunction()">Like</button>-->
+
+            <p id = "demo"></p>
+              <script>
+                  function myFunction(){
+                    document.getElementById("demo").innerHTML = "This is a message of likes!"
+                    }
+              </script>
+
+
+
 
             <small class="text-muted">Liked: {{ post.likes }} times</small>
-
 
 
           </div>
