@@ -23,6 +23,10 @@ def about():
     return render_template('about.html', title='About')
 
 
+@app.route("/liked")
+def liked():
+    return render_template('liked.html', title='Liked')
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:

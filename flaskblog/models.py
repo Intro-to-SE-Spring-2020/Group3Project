@@ -1,7 +1,10 @@
 from datetime import datetime
+
+from flask import url_for
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flaskblog import db, login_manager, app
 from flask_login import UserMixin
+from werkzeug.utils import redirect
 
 
 def like_hit():
@@ -66,5 +69,7 @@ def like_action(post_id, action):
         #current_user.unlike_post(post)
         db.session.commit()
     #return render_template('home.html', posts=posts)
-    return f"This is not where it needs to go. Also you must go back then refresh page to see new amount of likes"
+     #renturn render_template('liked.html', title='Liked')
+    return redirect(url_for('home'))
+    #return f"This is not where it needs to go. Also you must go back then refresh page to see new amount of likes"
     #return redirect(request.referrer)
