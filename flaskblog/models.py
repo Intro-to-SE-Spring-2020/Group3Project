@@ -4,8 +4,6 @@ from flaskblog import db, login_manager, app
 from flask_login import UserMixin
 
 
-
-
 def like_hit():
     print("hello world")
     return 0
@@ -48,5 +46,25 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     likes = db.Column(db.Integer, default=0)
+    #likes = db.relationship('PostLike', backref='post', lazy='dynamic')
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+@app.route('/like/<int:post_id>/<action>')
+
+def like_action(post_id, action):
+    post = Post.query.filter_by(id=post_id).first_or_404()
+    if action == 'like':
+        #temp = 69420
+        #print (post.likes)
+        #temp += 1
+        post.likes = post.likes +1
+        #current.user.like_post(post)
+        db.session.commit()
+    if action == 'unlike':
+        #current_user.unlike_post(post)
+        db.session.commit()
+    #return render_template('home.html', posts=posts)
+    return f"This is not where it needs to go. Also you must go back then refresh page to see new amount of likes"
+    #return redirect(request.referrer)
