@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1 class="mb-3">Posts by {{ user.username }} ({{ posts.total }})</h1>
-    <small class="text-muted">Follows: {{ user.follows}} </small>
+
     {% for post in posts.items %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
@@ -14,8 +14,8 @@
               <p class="article-content">{{ post.content }}</p>
                 <a href="{{ url_for('like_action2', post_id=post.id, action='like', page='user_posts', user=post.author.username) }}">Like</a>
                 <small class="text-muted">Liked: {{ post.likes }} times</small>
-             <small class="text-muted"> Following: </small>
-              <small class="text-muted">{{ user.follows }}</small>
+
+
               {% if current_user.is_authenticated %}
               <h3><a href="{{ url_for('follow_action',logged_user = current_user.id, user_id = user.id, action='follow') }}">Follow</a></h3>
               {% else %}

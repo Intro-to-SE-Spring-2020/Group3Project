@@ -68,15 +68,21 @@ def like_action1(post_id, action):
 
 @app.route('/like/<int:post_id>/<action>/<page>/<user>')
 def like_action2(post_id, action, page, user):
-    post = Post.query.filter_by(id=post_id).first_or_404()
+    ##post = Post.query.filter_by(id=post_id).first_or_404()
     if action == 'like':
+        post = Post.query.filter_by(id=post_id).first_or_404()
         post.likes = post.likes +1
         db.session.commit()
     if action == 'unlike':
         db.session.commit()
+    if action == 'follow':
+        return redirect(url_for('user_posts', username=user))
     return redirect(url_for('user_posts', username=user))
 
+@app.route('/follow/<user>')
 
+def goFollow(user):
+    return redirect(url_for('user_posts', username=user))
 @app.route('/follow/<int:logged_user>/<int:user_id>/<action>')
 
 def follow_action(logged_user, user_id, action):
