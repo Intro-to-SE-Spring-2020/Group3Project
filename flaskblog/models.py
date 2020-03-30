@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    follows = db.Column(db.String(20), unique=True, nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
@@ -59,11 +60,7 @@ class Post(db.Model):
 def like_action(post_id, action):
     post = Post.query.filter_by(id=post_id).first_or_404()
     if action == 'like':
-        #temp = 69420
-        #print (post.likes)
-        #temp += 1
         post.likes = post.likes +1
-        #current.user.like_post(post)
         db.session.commit()
     if action == 'unlike':
         #current_user.unlike_post(post)
@@ -73,3 +70,16 @@ def like_action(post_id, action):
     return redirect(url_for('home'))
     #return f"This is not where it needs to go. Also you must go back then refresh page to see new amount of likes"
     #return redirect(request.referrer)
+
+
+@app.route('/follow/<int:logged_user>/<int:user_id>/<action>')
+
+def follow_action(logged_user, user_id, action):
+    user = User.query.filter_by(id=user_id).first_or_404()
+    current = User.query.filter_by(id=logged_user).first_or_404()
+    if current.id == user.id:
+        return redirect(url_for('home'))
+    if action == 'follow':
+        current.follows = user.username
+        db.session.commit()
+    return redirect(url_for('home'))
