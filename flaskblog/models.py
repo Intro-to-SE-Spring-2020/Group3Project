@@ -56,20 +56,25 @@ class Post(db.Model):
 
 
 @app.route('/like/<int:post_id>/<action>')
-
-def like_action(post_id, action):
+def like_action1(post_id, action):
     post = Post.query.filter_by(id=post_id).first_or_404()
     if action == 'like':
         post.likes = post.likes +1
         db.session.commit()
     if action == 'unlike':
-        #current_user.unlike_post(post)
         db.session.commit()
-    #return render_template('home.html', posts=posts)
-     #renturn render_template('liked.html', title='Liked')
     return redirect(url_for('home'))
-    #return f"This is not where it needs to go. Also you must go back then refresh page to see new amount of likes"
-    #return redirect(request.referrer)
+
+
+@app.route('/like/<int:post_id>/<action>/<page>/<user>')
+def like_action2(post_id, action, page, user):
+    post = Post.query.filter_by(id=post_id).first_or_404()
+    if action == 'like':
+        post.likes = post.likes +1
+        db.session.commit()
+    if action == 'unlike':
+        db.session.commit()
+    return redirect(url_for('user_posts', username=user))
 
 
 @app.route('/follow/<int:logged_user>/<int:user_id>/<action>')
