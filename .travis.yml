@@ -16,4 +16,4 @@ install:
 # command to run tests
 script:
   - pytest
-  #- python Group3Project test
+  - python Group3Project/app.py test
