@@ -7,6 +7,5 @@ branches:
   only:
     - "master"
 script:
-  - cd client
   - npm ci
   - npm run test-coverage
