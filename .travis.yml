@@ -6,6 +6,15 @@ python:
 branches:
   only:
     - "master"
+    
+before_install:
+- npm update
+
+install:
+  - pip install -r requirements.txt
+  - npm install
+  
+# command to run tests
 script:
   - npm ci
   - npm run test-coverage
