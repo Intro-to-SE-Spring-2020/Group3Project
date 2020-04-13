@@ -7,5 +7,5 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  #- pytest
-  - python Group3Project test
+  - pytest
+  #- python Group3Project test
