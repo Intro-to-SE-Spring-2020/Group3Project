@@ -3,13 +3,10 @@ python:
   - "3.6"      # current default Python on Travis CI
   - "3.7"
   - "3.8"
-# command to install dependencies
-before_install:
-- npm update
-install:
-  - pip install -r requirements.txt
-  - npm install
-# command to run tests
+branches:
+  only:
+    - "master"
 script:
-  - pytest
-
+  - cd client
+  - npm ci
+  - npm run test-coverage
