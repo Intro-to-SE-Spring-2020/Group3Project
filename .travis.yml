@@ -8,4 +8,4 @@ install:
 # command to run tests
 script:
   #- pytest
-  - python mysite/manage.py test
+  - python Group3Project test
