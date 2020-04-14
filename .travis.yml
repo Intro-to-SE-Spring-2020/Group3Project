@@ -1,20 +1,7 @@
-language: python
+language: node_js
 
-python:
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
-  
-  
-before_install:
- - python --version
- - pip install -U pip
- - pip install -U pytest
- - pip install codecov
-# command to install dependencies
-install:
-  - pip install -r requirements.txt
-  #- pip install ".[test]" . # install package + test dependencies
-# command to run tests
+matrix:
+  include:
+    - node_js: "8"
 script:
-  - pytest
-  - python Group3Project/app.py test
+  - npm test
