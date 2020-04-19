@@ -1,0 +1,4 @@
+  Our project is a locally hosted twitter-like website. It allows the user to create an account, create posts, follow other users, 
+as well as a few other functions. The websites information is stored in a database so it will rememer every user and every post that
+has not been deleted. To use the website, all you have to do is download the files from our repo and run the "run" file, then you can
+become a tweeter too. 
